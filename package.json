@@ -1,0 +1,40 @@
+{
+  "name": "koa-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --harmony index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3110160/koa-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/3110160/koa-app/issues"
+  },
+  "homepage": "https://github.com/3110160/koa-app#readme",
+  "dependencies": {
+    "fluent-ffmpeg": "^2.0.0-rc1",
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-json": "^2.0.2",
+    "koa-multer": "^1.0.2",
+    "koa-mysql-session": "^0.0.2",
+    "koa-router": "^7.4.0",
+    "koa-session-minimal": "^3.0.4",
+    "koa-static": "^4.0.2",
+    "mysql": "^2.15.0",
+    "sha1": "^1.1.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "cnpm": "^5.2.0",
+    "i": "^0.3.6"
+  }
+}

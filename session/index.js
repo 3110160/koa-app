@@ -1,6 +1,4 @@
-import {database} from "../config";
 const session = require('koa-session-minimal');
-const MysqlSession = require('koa-mysql-session');
 
 // 配置存储session信息的mysql
 

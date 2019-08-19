@@ -1,61 +1,25 @@
-<table class="table">
-  <thead class="thead-dark">
+<div class='list'>
+  <button type="button" class="btn btn-primary add">新增</button>
+  <table class="table table-striped">
+  <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">排序</th>
+      <th scope="col">书名</th>
+      <th scope="col">作者</th>
+      <th scope="col">出版时间</th>
+      <th scope="col">操作</th>
     </tr>
   </thead>
   <tbody>
+  <% list.forEach(function(item){%>
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td><%=item.bookName%></td>
+      <td><%=item.author%></td>
+      <td><%=item.creatTime%></td>
+      <td><button type="button" class="btn btn-danger">删除</button></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    <% }) %>
   </tbody>
 </table>
-
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+</div>

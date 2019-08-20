@@ -3,12 +3,14 @@ const router = new Router();
 // import {uploadImg,uploadVideo} from '../fileUpload'
 import {getUserById,login,userRegister,getBlogUserList} from '../controller/user'
 import { addArticle,getArticleInfo} from '../controller/article'
-import { viewIndex,viewAdd,viewList} from '../controller/views';
+import { viewIndex,viewAdd,viewList,viewDemo} from '../controller/views';
 
 //主页面信息
 import {getBlogList} from '../controller/blog'
 
 const routers = (app)=>{
+    // view demo.ejs
+    router.get('/demo',viewDemo);
     // view add.ejs
     router.get('/add',viewAdd);
     // view list.ejs

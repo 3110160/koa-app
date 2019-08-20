@@ -2,12 +2,17 @@ import {demoGet} from '../porxyModels/demo';
 
 export const viewIndex = async ( ctx ) => {
     let title = 'hello koa2'
-    const goods = await demoGet();
-    console.log(goods)
     await ctx.render('index', {
       title,
-      goods,
     })
+}
+export const viewDemo = async ( ctx ) => {
+  let title = 'demo'
+  const goods = await demoGet();
+  await ctx.render('demo', {
+    title,
+    goods,
+  })
 }
 
 export const viewList = async ( ctx ) => {

@@ -1,0 +1,22 @@
+<div class='list'>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">排序</th>
+      <th scope="col">图片</th>
+      <th scope="col">名称</th>
+      <th scope="col">价格</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% goods.forEach(function(item,index){%>
+    <tr>
+      <th scope="row"><%=index%></th>
+      <td><img width='100px' height='100px' src="<%= item.goodsDefaultImage %>" alt="Card image cap"></td>
+      <td><%=item.goodsName%></td>
+      <td><%=item.goodsFactoryPrice%></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="/imgs/demo.jpeg" type="image/x-icon" />
+    <title>首页</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+    <% include ./nav.html%>
+    <div class="home">
+        <h1>hello koa2</h1>
+        <div id="app-5">
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage">反转消息</button>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- 如果游览器支持es6 -->
+    <script type="module">
+        import('/js/indexVue.js').then(_=>{
+            console.log(_.default);
+            _.default();
+        })
+    </script>
+    <!-- 如果游览器不支持es6 -->
+    <!-- nomodule属性是一个布尔属性，用于阻止脚本在支持模块脚本的用户代理中执行。 -->
+    <script nomodule src="https://cdn.bootcss.com/systemjs/5.0.0/system.min.js"></script>
+
+    <script nomodule>
+        System.import('/js/indexVue.bundled.js').then(_ => {
+            console.log(_.default);
+            _.default();
+        })
+    </script>
+</body>
+
+</html>

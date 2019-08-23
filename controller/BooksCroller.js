@@ -27,9 +27,10 @@ class BooksCroller extends BaseCrotroller {
      * @description 渲染列表的view
      */
     async actionList(ctx, next) {
-        const list = await booksModels.getBookList();
-        await ctx.render('list', {
-            list,
+        const goods = await booksModels.getBookList();
+        await ctx.render('demo', {
+            goods,
+            title: '测试',
         })
         await next();
     }

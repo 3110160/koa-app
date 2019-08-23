@@ -4,7 +4,7 @@ const json = require('koa-json');
 const koaStatic = require('koa-static');
 const render = require('koa-ejs');
 
-import {config} from './config';
+import config from './config';
 import routers from './router';
 
 const app = new Koa();
@@ -18,9 +18,9 @@ app.use(bodyParser());
 
 // 加载模板引擎
 render(app, {
+    layout:'',
     root: config.viewsDir,
-    layout: 'layout',
-    viewExt: 'ejs',
+    viewExt: 'html',
     cache: false,
     debug: false
 });
@@ -31,28 +31,15 @@ routers(app);
 app.use(json());
 
 //todo 统一包装一层
-app.use(async(ctx,next)=>{
-    if(ctx.body){
-        if(!ctx.body.error){
-            ctx.body={
-                status:200,
-                result:ctx.body
-            }
-        }else{
-            ctx.body={
-                status:200,
-                error:ctx.body.error
-            }
-        }
-    }
-    if(ctx.status === 404){
+app.use(async (ctx, next) => {
+    if (ctx.status === 404) {
         await ctx.render('404', {
-            title:'404',
+            title: '404',
         })
     }
     await next();
 });
 
-app.listen(config.port,()=>{
+app.listen(config.port, () => {
     console.log(`listening ${config.port} ...`)
 });

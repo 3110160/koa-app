@@ -1,24 +1,7 @@
 const Router = require('koa-router');
 const router = new Router();
-// import {uploadImg,uploadVideo} from '../fileUpload'
-import {
-    getUserById,
-    login,
-    userRegister,
-    getBlogUserList
-} from '../controller/user'
-import {
-    addArticle,
-    getArticleInfo
-} from '../controller/article'
-import {
-    BooksCroller
-} from '../controller/BooksCroller';
-const booksCroller = new BooksCroller();
-//主页面信息
-import {
-    getBlogList
-} from '../controller/blog'
+import BooksCroller from '../controller/BooksCroller';
+const booksCroller = new BooksCroller;
 
 const routers = (app) => {
     // view add.ejs

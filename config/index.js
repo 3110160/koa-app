@@ -1,16 +1,27 @@
-//服务器端口
-const severPort = 3001;
+const {extend} = require('lodash');
+const {join} = require('path');
 
-//数据库配置
-const database ={
-    HOST:'localhost',
-    PORT:'3306',
-    DATABASE:'blog',
-    USERNAME:'root',
-    PASSWORD:'123456789'
-};
+const config = {
+    // 静态资源目录
+    staticDir = join(__dirname,'..','static'),
+    // 视图层目录
+    viewsDir = join(__dirname,'..','views'),
+}
+
+// 开发环境
+if(process.env.NODE_ENV === 'development'){
+    config=extend(config,{
+        prot:3000,
+    })
+}
+
+// 生产环境
+if(process.env.NODE_ENV === 'production'){
+    config=extend(config,{
+        prot:3001,
+    })
+}
 
 export {
-    severPort,
-    database
+    config,
 }

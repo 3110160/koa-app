@@ -1,6 +1,8 @@
 const {extend} = require('lodash');
 const {join} = require('path');
 let config = {
+    // 默认端口
+    port:9090,
     // 静态资源目录
     staticDir : join(__dirname,'..','static'),
     // 视图层目录
@@ -17,7 +19,7 @@ if(process.env.NODE_ENV == 'development'){
 // 生产环境
 if(process.env.NODE_ENV == 'production'){
     config=extend(config,{
-        port:3001,
+        port:8000,
     })
 }
 

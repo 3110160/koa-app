@@ -4,6 +4,7 @@ import BooksCroller from '../controller/BooksCroller';
 const booksCroller = new BooksCroller;
 
 const routers = (app) => {
+    router.get('/poetry/:id', booksCroller.actionShowPoetry);
     // view add.ejs
     router.get('/add', booksCroller.actionAdd);
     // view list.ejs

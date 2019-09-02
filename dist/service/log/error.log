@@ -1,0 +1,5 @@
+[2019-09-02T17:54:32.929] [ERROR] cheese - { Error: ENOENT: no such file or directory, open '/Users/mac/koa-app/dist/service/web/views/index.html'
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/mac/koa-app/dist/service/web/views/index.html' }

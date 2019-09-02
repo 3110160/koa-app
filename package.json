@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development supervisor ./dist/service/app.js",
     "jsdoc": "jsdoc -c ./jsdoc.conf.json",
-    "build": "babel ./static/js/indexVue.js --watch --out-file ./static/js/indexVue.bundled.js",
+    "webdev": "webpack-dev-server --env.mode development",
+    "webdist": "webpack --env.mode production",
+    "gulp": "gulp serviceBableWatch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -50,8 +52,13 @@
     "@babel/runtime": "^7.5.5",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "copy-webpack-plugin": "^5.0.4",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-watch": "^5.0.1"
+    "gulp-watch": "^5.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   }
 }

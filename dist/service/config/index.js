@@ -15,9 +15,9 @@ var config = {
   // 默认端口
   port: 9090,
   // 静态资源目录
-  staticDir: join(__dirname, '..', 'web/static'),
+  staticDir: join(__dirname, '../../', '/web/static'),
   // 视图层目录
-  viewsDir: join(__dirname, '..', 'web/views') // 开发环境
+  viewsDir: join(__dirname, '../../', '/web/views') // 开发环境
 
 };
 

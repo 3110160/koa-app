@@ -1,36 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <title>LitElement Example</title>
+  </head>
 
-<head>
-    <link rel="shortcut icon" href="/imgs/demo.jpeg" type="image/x-icon" />
-    <title>首页</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/index.css">
-</head>
-
-<body>
-    <% include ./nav.html%>
-    <script src="/lib/custom-elements-es5-adapter.js"></script>
-    <script src="/lib/webcomponents-bundle.js"></script>
-
-    <!-- 如果游览器支持es6 -->
-    <script type="module" src="/js/demo.js"></script>
-    <script type="module">
-        import('/js/indexVue.js').then(_=>{
-            _.default();
-        })
-    </script>
-    <!-- 如果游览器不支持es6 -->
-    <!-- nomodule属性是一个布尔属性，用于阻止脚本在支持模块脚本的用户代理中执行。 -->
-    <script nomodule src="https://cdn.bootcss.com/systemjs/5.0.0/system.min.js"></script>
-
-    <script nomodule>
-        System.import('/js/indexVue.bundled.js').then(_ => {
-            _.default();
-        })
-    </script>
+  <body>
     <my-element></my-element>
-</body>
+  </body>
 
 </html>

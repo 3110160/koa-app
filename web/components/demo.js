@@ -18,8 +18,7 @@ class MyElement extends LitElement {
      * with the `html` helper function:
      */
     return html`
-      <!-- template content -->
-      <p>A paragraph</p>
+      <p>A customElements</p>
     `;
   }
 }

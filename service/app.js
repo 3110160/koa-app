@@ -53,5 +53,5 @@ app.use(json());
 
 
 app.listen(config.port, () => {
-    console.log(`listening ${config.port} ...22..`)
+    console.log(`listening ${config.port} ...2..`)
 });

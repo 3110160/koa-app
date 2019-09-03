@@ -18,7 +18,7 @@ class MyElement extends LitElement {
      * with the `html` helper function:
      */
     return html`
-      <p>A customElements</p>
+      <p>Awww wwwww</p>
     `;
   }
 }

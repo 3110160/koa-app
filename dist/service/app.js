@@ -55,5 +55,5 @@ render(app, {
 (0, _router["default"])(app);
 app.use(json());
 app.listen(_config["default"].port, function () {
-  console.log("listening ".concat(_config["default"].port, " ...22.."));
+  console.log("listening ".concat(_config["default"].port, " ...2.."));
 });

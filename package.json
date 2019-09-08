@@ -9,7 +9,8 @@
     "webdev": "webpack-dev-server --env.mode development --content-base web/",
     "webdist": "webpack --env.mode production",
     "gulp": "gulp default",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client:dev": "scripty",
+    "client:prod": "scripty"
   },
   "repository": {
     "type": "git",
@@ -53,13 +54,17 @@
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "copy-webpack-plugin": "^5.0.4",
+    "glob": "^7.1.4",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-util": "^3.0.8",
     "gulp-watch": "^5.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "scripty": "^1.9.1",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.2",
+    "yargs-parser": "^14.0.0"
   }
 }

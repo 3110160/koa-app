@@ -2,7 +2,7 @@
 import { LitElement, html } from "lit-element";
 
 // Extend the LitElement base class
-class MyElement extends LitElement {
+export default class MyElement extends LitElement {
   /**
    * Implement `render` to define a template for your element.
    *

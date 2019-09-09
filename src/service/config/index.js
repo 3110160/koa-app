@@ -4,9 +4,9 @@ let config = {
     // 默认端口
     port:9090,
     // 静态资源目录
-    staticDir : join(__dirname,'../../','/web/static'),
+    staticDir : join(__dirname,'..','assets'),
     // 视图层目录
-    viewsDir : join(__dirname,'../../','/web/views'),
+    viewsDir : join(__dirname,'..','views'),
 }
 
 // 开发环境

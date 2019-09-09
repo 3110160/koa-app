@@ -1,47 +1,65 @@
-const gulp = require('gulp');
-const babel = require('gulp-babel');
-const webpack = require("webpack");
-const gutil = require("gulp-util");
-const webpackConfig = require("./webpack.config.js");
-const devCompiler = webpack(webpackConfig({mode:'production'}));
-
-gulp.task('babel', () =>
-    gulp.src(['service/*.js', 'service/**/*.js'])
-    .pipe(babel({
-        presets: ['@babel/env'],
-        plugins: ["@babel/plugin-transform-runtime"]
-    }))
-    .pipe(gulp.dest('dist/service'))
+const gulp = require("gulp");
+const babel = require("gulp-babel");
+const rollup = require("gulp-rollup");
+const replace = require("rollup-plugin-replace");
+// dev
+gulp.task("devBabel", () =>
+  gulp
+    .src(["src/service/**/*.js"])
+    .pipe(
+      babel({
+        babelrc: false,
+        plugins: ["@babel/plugin-transform-modules-commonjs"]
+      })
+    )
+    .pipe(gulp.dest("dist/"))
 );
 
-gulp.task('copy', () =>
-    gulp.src('service/poetry/*')
-    .pipe(gulp.dest('dist/service/poetry/'))
+// prod
+gulp.task("prodBabel", () =>
+  gulp
+    .src(["src/service/**/*.js"])
+    .pipe(
+      babel({
+        babelrc: false,
+        ignore: ["src/service/config/*.js"],
+        plugins: ["@babel/plugin-transform-modules-commonjs"]
+      })
+    )
+    .pipe(gulp.dest("dist/"))
 );
 
-function webpackDevelopment(done) {
-    devCompiler.run(function (err, stats) {
-        if (err) {
-            throw new gutil.PluginError("webpack:build-dev", err);
-            return;
-        }
-        gutil.log("[webpack:build-dev]", stats.toString({
-            colors: true
-        }));
-        done();
-    });
-}
+gulp.task("copy", () =>
+  gulp.src("src/service/poetry/*").pipe(gulp.dest("dist/poetry/"))
+);
 
-gulp.task('watchWebDev', () => {
-    gulp.watch(['web/**/*.js', 'web/**/**/*.js', 'web/**/*.html'], webpackDevelopment);
-})
-
-gulp.task('serviceBableWatch', () => {
-    gulp.watch(['service/*.js', 'service/**/*.js'], gulp.series('babel', 'copy'));
-    gulp.watch('service/poetry/*.txt', gulp.series('copy'));
+// 清洗线上的 if else 代码
+gulp.task("clean", () => {
+  gulp
+    .src(["src/service/**/*.js"])
+    .pipe(
+      rollup({
+        input: "src/service/config/*.js",
+        output: {
+          format: "cjs"
+        },
+        plugins: [
+          replace({
+            "process.env.NODE_ENV": JSON.stringify("production")
+          })
+        ]
+      })
+    )
+    .pipe(gulp.dest("dist/"));
 });
 
-gulp.task("default", gulp.series(
-    'watchWebDev',
-    'serviceBableWatch',
-));
+gulp.task("serviceBableWatch", () => {
+  gulp.watch(["src/service/**/*.js"], gulp.series("devBabel", "copy"));
+  gulp.watch("src/service/poetry/*.txt", gulp.series("copy"));
+});
+
+if (process.env.NODE_ENV === "development") {
+  gulp.task("default", gulp.series("serviceBableWatch"));
+} else if (process.env.NODE_ENV === "production") {
+  gulp.task("default", gulp.series("prodBabel", "clean", "copy"));
+}

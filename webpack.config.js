@@ -63,7 +63,7 @@ const defaultConfig = {
       },
       {
         from: "./src/web/lib/",
-        to: "../lib/"
+        to: "lib/"
         // 复制过程中对文件内容进行优化
         // transform(content, path) {
         //   return Promise.resolve(optimize(content));

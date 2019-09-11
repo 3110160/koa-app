@@ -2,31 +2,42 @@ const gulp = require("gulp");
 const babel = require("gulp-babel");
 const rollup = require("gulp-rollup");
 const replace = require("rollup-plugin-replace");
+const eslint = require('gulp-eslint');
 // dev
 gulp.task("devBabel", () =>
   gulp
-    .src(["src/service/**/*.js"])
-    .pipe(
-      babel({
-        babelrc: false,
-        plugins: ["@babel/plugin-transform-modules-commonjs"]
-      })
-    )
-    .pipe(gulp.dest("dist/"))
+  .src(["src/service/**/*.js"])
+  .pipe(
+    babel({
+      babelrc: false,
+      plugins: ["@babel/plugin-transform-modules-commonjs"]
+    })
+  )
+  .pipe(gulp.dest("dist/"))
+);
+
+gulp.task("devEsLint", () =>
+  gulp
+  .src(["src/service/**/*.js"])
+  .pipe(eslint({
+    useEslintrc: true,
+  }))
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError())
 );
 
 // prod
 gulp.task("prodBabel", () =>
   gulp
-    .src(["src/service/**/*.js"])
-    .pipe(
-      babel({
-        babelrc: false,
-        ignore: ["src/service/config/*.js"],
-        plugins: ["@babel/plugin-transform-modules-commonjs"]
-      })
-    )
-    .pipe(gulp.dest("dist/"))
+  .src(["src/service/**/*.js"])
+  .pipe(
+    babel({
+      babelrc: false,
+      ignore: ["src/service/config/*.js"],
+      plugins: ["@babel/plugin-transform-modules-commonjs"]
+    })
+  )
+  .pipe(gulp.dest("dist/"))
 );
 
 gulp.task("copy", () =>
@@ -62,4 +73,6 @@ if (process.env.NODE_ENV === "development") {
   gulp.task("default", gulp.series("serviceBableWatch"));
 } else if (process.env.NODE_ENV === "production") {
   gulp.task("default", gulp.series("prodBabel", "clean", "copy"));
+} else if (process.env.NODE_ENV === "lint") {
+  gulp.task("default", gulp.series("devEsLint"));
 }

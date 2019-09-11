@@ -10,6 +10,14 @@ import config from "./config";
 import routers from "./router";
 const app = new Koa();
 
+// 加载模板引擎
+app.context.render = wrap(render({
+  root: config.viewsDir,
+  autoescape: true,
+  cache: false,
+  ext: 'html',
+  writeBody: false
+}));
 // 错误日志配置
 log4js.configure({
   appenders: {
@@ -32,15 +40,7 @@ app.context.logger = log4js.getLogger("cheese");
 app.use(koaStatic(config.staticDir));
 app.use(bodyParser());
 
-// 加载模板引擎
-app.context.render = wrap(render({
-    root: config.viewsDir,
-    autoescape: true,
-    cache: false,
-    ext: 'html',
-    // varControls: ["[[", "]]"],
-    writeBody: false
-}));
+console.log(config.viewsDir)
 
 // 错误处理
 error(app);

@@ -1,8 +1,12 @@
 import BaseCrotroller from "./BaseCrotroller";
 import BooksModels from "../porxyModels/BooksModels";
 const booksModels = new BooksModels();
-const { readFile } = require("fs");
-const { join } = require("path");
+const {
+  readFile
+} = require("fs");
+const {
+  join
+} = require("path");
 
 const asyncReadFile = path => {
   return new Promise((resolve, reject) => {
@@ -28,7 +32,7 @@ class BooksCroller extends BaseCrotroller {
    * @description 渲染首页的view
    */
   async actionIndex(ctx, next) {
-    await ctx.render("books/pages/index");
+    ctx.body = await ctx.render("books/pages/index");
     await next();
   }
   /**
@@ -64,8 +68,7 @@ class BooksCroller extends BaseCrotroller {
    * @description 渲染诗句的view
    */
   async actionShowPoetry(ctx, next) {
-    const id =
-      +ctx.params.id > 10 ? Math.ceil(Math.random(0, 1) * 10) : +ctx.params.id;
+    const id = +ctx.params.id > 10 ? Math.ceil(Math.random(0, 1) * 10) : +ctx.params.id;
     const data = await asyncReadFile(
       join(__dirname, "../", `/poetry/poetry${id}.txt`)
     );
